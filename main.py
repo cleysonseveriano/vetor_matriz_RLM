@@ -1,32 +1,38 @@
 from random import random
-import face_recognition
+
+""" #CADASTRO DE MATRIZES
 lA = int(input("Digite o nº de linhas de A: "))
 cA = int(input("Digite o nº de colunas de A: "))
 
 lB = int(input("Digite o nº de linhas de B: "))
 cB = int(input("Digite o nº de colunas de B: "))
+A = [None]* lA
+for i in range(len(A)):
+    A[i] = [None]*cA
 
-def questao_1(lA,cA,lB,cB):
-#CADASTRO DE MATRIZES
-    A = [None]* lA
-    for i in range(len(A)):
-        A[i] = [None]*cA
+B = [None]* lB
+for i in range(len(B)):
+    B[i] = [None]*cB
 
-    B = [None]* lB
-    for i in range(len(B)):
-        B[i] = [None]*cB
+for i in range(len(A)):
+    for j in range(len(A[i])):
+        A[i][j] = int(random()*11)
 
-    for i in range(len(A)):
-        for j in range(len(A[i])):
-            A[i][j] = int(random()*11)
+for i in range(len(B)):
+    for j in range(len(B[i])):
+        B[i][j] = int(random()*11) """
 
-    for i in range(len(B)):
-        for j in range(len(B[i])):
-            B[i][j] = int(random()*11)
+def primo(number):
+    j = 0
+    for i in range(1, number + 1):
+        if number%i==0:
+            j+=1
+    if j==2:
+        return True
+    else:
+        return False
 
-    print(A)
-    print(B)
-
+def questao_1(la,cA,lB,cB):
     x = int(input("Digite x: "))
     y = int(input("Digite y: "))
 
@@ -50,8 +56,13 @@ def questao_1(lA,cA,lB,cB):
             print(B[i][j], end='    ')
         print()
 
-def questao_2(lA,cA,lB,cB):
+def questao_2():
     #CADASTRO DE MATRIZES
+    lA = int(input("Digite o nº de linhas de A: "))
+    cA = int(input("Digite o nº de colunas de A: "))
+
+    lB = int(input("Digite o nº de linhas de B: "))
+    cB = int(input("Digite o nº de colunas de B: "))
     A = [None]* lA
     for i in range(len(A)):
         A[i] = [None]*cA
@@ -108,4 +119,276 @@ def questao_2(lA,cA,lB,cB):
         for j in range(len(D[i])):
             print(D[i][j], end='    ')
         print()
-questao_2(lA,cA,lB,cB)    
+
+def questao_3():
+    #CADASTRO DE MATRIZES
+    lA = int(input("Digite o nº de linhas de A: "))
+    cA = int(input("Digite o nº de colunas de A: "))
+
+    lB = int(input("Digite o nº de linhas de B: "))
+    cB = int(input("Digite o nº de colunas de B: "))
+    A = [None]* lA
+    for i in range(len(A)):
+        A[i] = [None]*cA
+
+    B = [None]* lB
+    for i in range(len(B)):
+        B[i] = [None]*cB
+
+    for i in range(len(A)):
+        for j in range(len(A[i])):
+            A[i][j] = int(random()*11)
+
+    for i in range(len(B)):
+        for j in range(len(B[i])):
+            B[i][j] = int(random()*11)
+
+    print('Matriz A')
+    for i in range(len(A)):
+        for j in range(len(A[i])):
+            print(A[i][j], end='    ')
+        print()
+    print()
+
+    print('Matriz B')
+    for i in range(len(B)):
+        for j in range(len(B[i])):
+            print(B[i][j], end='    ')
+        print()
+#OPERAÇÃO PARA CONSTRUÇÃO DA MATRIZ SOMA
+#ATRIBUÍMOS VALORES A MATRIZ SOMA
+    if (lA==lB) and (cA==cB):
+        for i in range(len(A)):
+            for j in range(len(A)):
+                A[i][j] += B[i][j]
+        print('Matriz SOMA')
+        for i in range(len(A)):
+            for j in range(len(A[i])):
+                print(A[i][j], end='    ')
+            print()
+    else:
+        print('O número de linhas e colunas de A e B, devem ser iguais')
+
+def questao_6():
+    lA = int(input("Digite o nº de linhas de A: "))
+    cA = int(input("Digite o nº de colunas de A: "))
+    if (lA==1 and cA==1) or (lA==1 and cA==0) or (lA==0 and cA==1):
+        A = [None]
+        A[0] = int(random()*10)
+        print(f'Vetor unitário: {A}')
+    elif lA>1 and cA==1:
+        A = [None]* lA
+        for i in range(len(A)):
+            A[i] = [None]*cA
+
+        for i in range(len(A)):
+            for j in range(len(A[i])):
+                A[i][j] = int(random()*10)
+
+        print('Vetor linha A')
+        for i in range(len(A)):
+            for j in range(len(A[i])):
+                print(A[i][j], end='    ')
+            print()
+        #MEDIA VETOR
+        media = 0
+        for i in range(len(A)):
+            for j in range(len(A[i])):
+                media += A[i][j]
+        media = media/len(A)
+        print(f'Média do vetor linha: {media:.2f}')
+    elif lA==1 and cA>1:
+        A = [None]* lA
+        for i in range(len(A)):
+            A[i] = [None]*cA
+
+        for i in range(len(A)):
+            for j in range(len(A[i])):
+                A[i][j] = int(random()*10)
+
+        print('Vetor coluna A')
+        for i in range(len(A)):
+            for j in range(len(A[i])):
+                print(A[i][j], end='    ')
+            print()
+        #MEDIA COLUNA
+        media = 0
+        for i in range(len(A)):
+            for j in range(len(A[i])):
+                media += A[i][j]
+            media = media/len(A[i])
+        print(f'Média do vetor coluna: {media:.2f}')
+    else:
+        A = [None]* lA
+        for i in range(len(A)):
+            A[i] = [None]*cA
+
+        for i in range(len(A)):
+            for j in range(len(A[i])):
+                A[i][j] = int(random()*10)
+
+        print('Matriz A')
+        for i in range(len(A)):
+            for j in range(len(A[i])):
+                print(A[i][j], end='    ')
+            print()
+        #MATRIZ LINHA
+        mLinha = [None]
+        for i in range(len(mLinha)):
+            mLinha[i] = [None]*cA
+        somaLA = 0
+        for r in range(cA):
+            somaLA = 0
+            for j in range(len(A)):
+                somaLA+=A[j][r]
+            mLinha[0][r] = somaLA/len(A)
+
+        print('MATRIZ LINHA')
+        for i in range(len(mLinha)):
+            for j in range(len(mLinha[i])):
+                print(f'{mLinha[i][j]:.2f}', end='     ')
+
+        print()
+
+        #MATRIZ COLUNA
+        mColuna =[None]*lA
+        for i in range(len(mColuna)):
+            mColuna[i] = [None]
+        for i in range(len(mColuna)):
+            somaCA = 0
+            for j in range(cA):
+                somaCA+=A[i][j]
+            mColuna[i][0] = somaCA/cA
+
+        print('MATRIZ COLUNA')
+        for i in range(len(mColuna)):
+            print(f'{mColuna[i][0]:.2f}', end='\n')
+
+def questao_7():
+    lB = int(input("Digite o nº de linhas de B: "))
+    cB = int(input("Digite o nº de colunas de B: "))
+    if (lB==1 and cB==1) or (lB==1 and cB==0) or (lB==0 and cB==1):
+        B = [None]
+        B[0] = int(random()*10)
+        print(f'Vetor unitário: {B}')
+    elif lB==1 and cB>1:
+        B = [None]* lB
+        for i in range(len(B)):
+            B[i] = [None]*cB
+        for i in range(len(B)):
+            for j in range(len(B[i])):
+                B[i][j] = int(random()*10)
+        print('Vetor linha B')
+        for i in range(len(B)):
+            for j in range(len(B[i])):
+                print(B[i][j], end='    ')
+            print()
+        nP = 0
+        for i in range(len(B)):
+            for j in range(len(B[i])):
+                if primo(B[i][j])==True:
+                    nP+=1
+        print(f'Qtnd de n°primos: {nP}')
+    elif lB>1 and cB==1:
+        B = [None]* lB
+        for i in range(len(B)):
+            B[i] = [None]*cB
+        for i in range(len(B)):
+            for j in range(len(B[i])):
+                B[i][j] = int(random()*10)
+        print('Vetor coluna B')
+        for i in range(len(B)):
+            for j in range(len(B[i])):
+                print(B[i][j], end='    ')
+            print()
+        nP = 0
+        for i in range(len(B)):
+            for j in range(len(B[i])):
+                if primo(B[i][j])==True:
+                    nP+=1
+        print(f'Qtnd de n°primos: {nP}')
+    else:
+        B = [None]* lB
+        for i in range(len(B)):
+            B[i] = [None]*cB
+        for i in range(len(B)):
+            for j in range(len(B[i])):
+                B[i][j] = int(random()*10)
+        print('Matriz B')
+        for i in range(len(B)):
+            for j in range(len(B[i])):
+                print(B[i][j], end='    ')
+            print()
+        BT = [None]*cB
+        for i in range(len(BT)):
+            BT[i] = [None]*lB
+        for i in range(len(BT)):
+            for j in range(len(BT[i])):
+                BT[i][j] = B[j][i]
+        print('Matriz BT')
+        for i in range(len(BT)):
+            for j in range(len(BT[i])):
+                print(BT[i][j], end='    ')
+            print()
+        print()
+        print('Matriz X')
+        X =[None]*cB
+        for i in range(len(X)):
+            X[i] = [None]*lB
+        for i in range(len(X)):
+            for j in range(len(X[i])):
+                X[i][j] = BT[i][j] * 2.5
+        for i in range(len(X)):
+            for j in range(len(X[i])):
+                print(X[i][j], end='    ')
+            print()
+
+def questao_8():
+    lA = int(input("Digite o nº de linhas de A: "))
+    cA = int(input("Digite o nº de colunas de A: "))
+
+    lB = int(input("Digite o nº de linhas de B: "))
+    cB = int(input("Digite o nº de colunas de B: "))
+    A = [None]* lA
+    for i in range(len(A)):
+        A[i] = [None]*cA
+
+    B = [None]* lB
+    for i in range(len(B)):
+        B[i] = [None]*cB
+
+    for i in range(len(A)):
+        for j in range(len(A[i])):
+            A[i][j] = int(random()*10)
+
+    for i in range(len(B)):
+        for j in range(len(B[i])):
+            B[i][j] = int(random()*10)
+
+    print('Matriz A')
+    for i in range(len(A)):
+        for j in range(len(A[i])):
+            print(A[i][j], end='    ')
+        print()
+    print()
+
+    print('Matriz B')
+    for i in range(len(B)):
+        for j in range(len(B[i])):
+            print(B[i][j], end='    ')
+        print()
+
+    N = input('Digite [1] ou [0]: ')
+    N = int(N)
+    while ((N != 0) and (N != 1)):
+        N = int(input('Digite [1] ou [0]: '))
+
+    if N==1:
+        Z = A
+        print(Z)
+
+
+
+
+
+questao_7()
