@@ -377,7 +377,7 @@ def questao_8():
         for j in range(len(B[i])):
             print(B[i][j], end='    ')
         print()
-
+    print()
     N = input('Digite [1] ou [0]: ')
     N = int(N)
     while ((N != 0) and (N != 1)):
@@ -385,10 +385,114 @@ def questao_8():
 
     if N==1:
         Z = A
-        print(Z)
+        #VETOR LINHA
+        if lA==1 and cA>1:
+            Z_aux = [0]*cA
+            for i in range(len(Z_aux)):
+                Z_aux[i] = [0]*cA
+            print()
+            print('Matriz Z LINHA')
+            soma = 0
+            for i in range(len(Z_aux)):
+                for j in range(len(Z_aux[i])):
+                    if i == j:
+                        Z_aux[i][j] = Z[0][j]
+                        soma+=Z[0][j]
+            Z = Z_aux
+            for i in range(len(Z)):
+                for j in range(len(Z[i])):
+                    print(Z[i][j], end='    ')
+                print()
+            print()
+            print(f'A soma do vetor linha é: {soma}')
+        #VETOR COLUNA
+        elif lA>1 and cA==1:
+            Z_aux = [0]*lA
+            for i in range(len(Z_aux)):
+                Z_aux[i] = [0]*lA
+            print()
+            print('Matriz Z')
+            for i in range(len(Z_aux)):
+                for j in range(len(Z_aux[i])):
+                    if i == j:
+                        Z_aux[i][j] = Z[i][0]
+            Z = Z_aux
+            for i in range(len(Z)):
+                for j in range(len(Z[i])):
+                    print(Z[i][j], end='    ')
+                print()  
+        #MATRIZ QUADRADA
+        elif lA==cA:
+            Z_aux = [None]*lA
+            for i in range(len(Z_aux)):
+                Z_aux[i] = [None]
+            for i in range(len(Z_aux)):
+                for j in range(len(Z)):
+                    if i == j:
+                        Z_aux[i][0] = Z[i][j]
+            print('\nMATRIZ COLUNA')
+            for i in range(len(Z_aux)):
+                for j in range(len(Z_aux[i])):
+                    print(Z_aux[i][j], end='    ')
+                print()
+            print()
+
+    elif N==0:
+        Z = B
+        #VETOR LINHA
+        if lB==1 and cB>1:
+            Z_aux = [0]*cB
+            for i in range(len(Z_aux)):
+                Z_aux[i] = [0]*cB
+            print()
+            print('Matriz Z')
+            soma = 0
+            for i in range(len(Z_aux)):
+                for j in range(len(Z_aux[i])):
+                    if i == j:
+                        Z_aux[i][j] = Z[0][j]
+                        soma+=Z[0][j]
+            Z = Z_aux
+            for i in range(len(Z)):
+                for j in range(len(Z[i])):
+                    print(Z[i][j], end='    ')
+                print()
+            print()
+            print(f'A soma do vetor linha é: {soma}')
+        #VETOR COLUNA
+        elif lB>1 and cB==1:
+            Z_aux = [0]*lB
+            for i in range(len(Z_aux)):
+                Z_aux[i] = [0]*lB
+            print()
+            print('Matriz Z')
+            for i in range(len(Z_aux)):
+                for j in range(len(Z_aux[i])):
+                    if i == j:
+                        Z_aux[i][j] = Z[i][0]
+            Z = Z_aux
+            for i in range(len(Z)):
+                for j in range(len(Z[i])):
+                    print(Z[i][j], end='    ')
+                print()  
+        #MATRIZ QUADRADA
+        elif lB==cB:
+            Z_aux = [None]*lB
+            for i in range(len(Z_aux)):
+                Z_aux[i] = [None]
+            for i in range(len(Z_aux)):
+                for j in range(len(Z)):
+                    if i == j:
+                        Z_aux[i][0] = Z[i][j]
+            print('\nMATRIZ COLUNA')
+            for i in range(len(Z_aux)):
+                for j in range(len(Z_aux[i])):
+                    print(Z_aux[i][j], end='    ')
+                print()
+            print()
 
 
 
 
 
-questao_7()
+questao_8()
