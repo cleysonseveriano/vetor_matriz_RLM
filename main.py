@@ -364,6 +364,83 @@ def questao_8(lA,cA,A,lB,cB,B):
                     soma+=Z[i][j]
             print(f'A soma do vetor é: {soma}')
 
+def questao_9(lA,cA,A,lB,cB,B):
+    if cA==lB:
+        #CADASTRO Y
+        Y = [None]*lA
+        for i in range(len(Y)):
+            Y[i] = [None] * cB
+        for i in range(len(Y)):
+            for j in range(len(Y[i])):
+                soma = 0
+                for k in range(cA):
+                    soma += (A[i][k] * B[k][j])
+                Y[i][j] = soma
+        print("Matriz Y")
+        for i in range(len(Y)):
+            for j in range(len(Y[i])):
+                print(Y[i][j], end='    ')
+            print()
+    else:
+        print('Ordens de matrizes não casam para produto matricial')
 
+def questao_10(lA,cA,A,lB,cB,B):
+    if len(A)==len(A[0]) and len(B)==len(B[0]):
+        AT = [None]*cA
+        for i in range(len(AT)):
+            AT[i] = [None]*lA
+        BT = [None]*cB
+        for i in range(len(BT)):
+            BT[i] = [None]*lB
+        for i in range(len(AT)):
+            for j in range(len(AT[i])):
+                AT[i][j] = A[j][i]
+        for i in range(len(BT)):
+            for j in range(len(BT[i])):
+                BT[i][j] = B[j][i]
+        print("Matriz AT")
+        for i in range(len(AT)):
+            for j in range(len(AT[i])):
+                print(AT[i][j], end='    ')
+            print()
+        print("Matriz BT")
+        for i in range(len(BT)):
+            for j in range(len(BT[i])):
+                print(BT[i][j], end='    ')
+            print()
+        #PRODUTO PONTO A PONTO
+        for i in range(len(AT)):
+            for j in range(len(AT[i])):
+                AT[i][j] = AT[i][j] * A[i][j]
+        for i in range(len(BT)):
+            for j in range(len(BT[i])):
+                BT[i][j] = BT[i][j] * B[i][j]
+        #MATRIZES MUTIPLICADAS
+        print("Matriz A * AT")
+        for i in range(len(AT)):
+            for j in range(len(AT[i])):
+                print(AT[i][j], end='    ')
+            print()
+        print("Matriz B * BT")
+        for i in range(len(BT)):
+            for j in range(len(BT[i])):
+                print(BT[i][j], end='    ')
+            print()
+        #SOMA DOS ELEMENTOS DAS DIAGONAIS PRINCIPAIS
+        somaAT = 0
+        for i in range(len(AT)):
+            for j in range(len(AT[i])): 
+                if i==j:
+                    somaAT+=AT[i][j]
+        somaBT = 0
+        for i in range(len(BT)):
+            for j in range(len(BT[i])): 
+                if i==j:
+                    somaBT+=BT[i][j]  
+        #CÁLCULO FINAL
+        somaTotal = somaAT + somaBT * 2
+        print(f'O resultado da soma é: {somaTotal}')
+    else:
+        print('[ERRO] Não é possível realizar a operação, pelo menos uma das matrizes não é quadrada!')
 
-questao_6(lA,cA,A)
+questao_10(lA,cA,A,lB,cB,B)
