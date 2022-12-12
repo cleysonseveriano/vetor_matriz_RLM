@@ -1,6 +1,7 @@
 from random import random
 
 #CADASTRO DE MATRIZES
+print('-'*15,'MENU', '-'*15, '\n')
 lA = int(input("Digite o nº de linhas de A: "))
 cA = int(input("Digite o nº de colunas de A: "))
 
@@ -23,14 +24,14 @@ for i in range(len(B)):
     for j in range(len(B[i])):
         B[i][j] = int(random()*10)
 
-print('Matriz A')
+print('\nMatriz A')
 for i in range(len(A)):
     for j in range(len(A[i])):
         print(A[i][j], end='    ')
     print()
 print()
 
-print('Matriz B')
+print('\nMatriz B')
 for i in range(len(B)):
     for j in range(len(B[i])):
         print(B[i][j], end='    ')
@@ -113,6 +114,62 @@ def questao_3(lA,cA,A,lB,cB,B):
             print()
     else:
         print('O número de linhas e colunas de A e B, devem ser iguais')
+
+def questao_4(lA,cA,A,lB,cB,B):
+    if lA == cA:
+        print("Diagonal Principal")
+        for i in range(len(A)):
+            for j in range(len(A[i])):
+                if i == j:
+                    print(A[i][j],end='  ')
+                else:
+                    print(end='  ')
+            print()
+        print()
+
+        print("Diagonal Secundária")
+        for i in range(len(A)):
+            for j in range(len(A[i])):
+                if (i+j) == len(A)-1:
+                    print(A[i][j],end='  ')
+                else:
+                    print(end='  ')
+            print()
+        print()
+    else:
+        maior = A[0][0]
+        posmaiorlinha = 0
+        posmaiorcoluna = 0
+        for i in range(len(A)):
+            for j in range(len(A[i])):
+                if A[i][j] > maior:
+                    maior = A[i][j]
+                    posmaiorlinha = i
+                    posmaiorcoluna = j
+        print(f"O maior vale {maior} e está na linha {posmaiorlinha+1} e na coluna {posmaiorcoluna+1}")
+
+def questao_5(lB,cB,B):
+    if lB == cB:
+        print("Diagonal Principal")
+        for i in range(len(B)):
+            for j in range(len(B[i])):
+                if i == j or j > i:
+                    print(B[i][j],end='  ')
+                else:
+                    print(end='   ')
+            print()
+        print()
+    else:
+        menor = B[0][0]
+        posmenorlinha = 0
+        posmenorcoluna = 0
+        for i in range(len(B)):
+            for j in range(len(B[i])):
+                if B[i][j] < menor:
+                    menor = B[i][j]
+                    posmenorlinha = i
+                    posmenorcoluna = j
+        print(f"O menor vale {menor} e está na linha {posmenorlinha+1} e na coluna {posmenorcoluna+1}")
 
 def questao_6(lA,cA,A):
     if (lA==1 and cA==1) or (lA==1 and cA==0) or (lA==0 and cA==1):
@@ -443,4 +500,29 @@ def questao_10(lA,cA,A,lB,cB,B):
     else:
         print('[ERRO] Não é possível realizar a operação, pelo menos uma das matrizes não é quadrada!')
 
-questao_10(lA,cA,A,lB,cB,B)
+def escolher_questao():
+    if number == 1:
+        questao_1(lA,cA,A,lB,cB,B)
+    elif number == 2:
+        questao_2(lA,cA,A,lB,cB,B)
+    elif number==3:
+        questao_3(lA,cA,A,lB,cB,B)
+    elif number==4:
+        questao_4(lA,cA,A,lB,cB,B)
+    elif number==5:
+        questao_5(lB,cB,B)
+    elif number==6:
+        questao_6(lA,cA,A)
+    elif number==7:
+        questao_7(lB,cB,B)
+    elif number==8:
+        questao_8(lA,cA,A,lB,cB,B)
+    elif number==9:
+        questao_9(lA,cA,A,lB,cB,B)
+    elif number==10:
+        questao_10(lA,cA,A,lB,cB,B)
+
+print('-'*15, 'Qual questão você quer fazer?', '-'*15)
+number = int(input('\nDigite o n° da questão: ')) 
+
+escolher_questao()
