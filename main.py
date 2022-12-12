@@ -1,46 +1,6 @@
 from random import random
-
 #CADASTRO DE MATRIZES
 print('-'*15,'MENU', '-'*15, '\n')
-
-print('-'*15, 'Qual questão você quer fazer?', '-'*15)
-number = int(input('\nDigite o n° da questão: ')) 
-if number == 1 or number == 2 or number == 3 or number == 4 or number == 6 or number == 8 or number == 9 or number == 10:
-    lA = int(input("Digite o nº de linhas de A: "))
-    cA = int(input("Digite o nº de colunas de A: "))
-    
-    A = [None]* lA
-    for i in range(len(A)):
-        A[i] = [None]*cA
-
-    for i in range(len(A)):
-        for j in range(len(A[i])):
-            A[i][j] = int(random()*10)
-    
-    print('\nMatriz A')
-    for i in range(len(A)):
-        for j in range(len(A[i])):
-            print(A[i][j], end='    ')
-        print()
-    print()
-
-if number == 1 or number == 2 or number == 3 or number == 4 or number == 5 or number == 7 or number == 8 or number == 9 or number == 10:
-    lB = int(input("Digite o nº de linhas de B: "))
-    cB = int(input("Digite o nº de colunas de B: "))
-    
-    B = [None]* lB
-    for i in range(len(B)):
-        B[i] = [None]*cB
-
-    for i in range(len(B)):
-        for j in range(len(B[i])):
-            B[i][j] = int(random()*10)
-
-    print('\nMatriz B')
-    for i in range(len(B)):
-        for j in range(len(B[i])):
-            print(B[i][j], end='    ')
-        print()
 
 def primo(number):
     j = 0
@@ -178,9 +138,8 @@ def questao_5(lB,cB,B):
 
 def questao_6(lA,cA,A):
     if (lA==1 and cA==1) or (lA==1 and cA==0) or (lA==0 and cA==1):
-        A = [None]
-        A[0] = int(random()*10)
         print(f'Vetor unitário: {A}')
+        print(f'Média do vetor unitário: {A[0]}')
     elif lA>1 and cA==1:
         print('Vetor coluna A')
         for i in range(len(A)):
@@ -241,10 +200,16 @@ def questao_6(lA,cA,A):
             print(f'{mColuna[i][0]:.2f}', end='\n')
 
 def questao_7(lB,cB,B):
-    if (lB==1 and cB==1) or (lB==1 and cB==0) or (lB==0 and cB==1):
-        B = [None]
-        B[0] = int(random()*10)
+    if (lB==1 and cB==0) or (lB==0 and cB==1):
+        print('Vetor vazio')
+    elif (lB==1 and cB==1):
         print(f'Vetor unitário: {B}')
+        nP = 0
+        for i in range(len(B)):
+            for j in range(len(B[i])):
+                if primo(B[i][j])==True:
+                    nP+=1
+        print(f'Qtnd de n°primos: {nP}')
     elif lB==1 and cB>1:
         nP = 0
         for i in range(len(B)):
@@ -521,6 +486,51 @@ def escolher_questao():
     elif number==10:
         questao_10(lA,cA,A,lB,cB,B)
 
+entrada = input('Vamos começar a ver nossa resolução? [S] [N]: ')
+while entrada!='N':
 
+    print('-'*15, 'Qual questão você quer fazer?', '-'*15)
+    number = int(input('\nDigite o n° da questão: ')) 
+    if number == 1 or number == 2 or number == 3 or number == 4 or number == 6 or number == 8 or number == 9 or number == 10:
+        lA = int(input("Digite o nº de linhas de A: "))
+        cA = int(input("Digite o nº de colunas de A: "))
+        
+        A = [None]* lA
+        for i in range(len(A)):
+            A[i] = [None]*cA
 
-escolher_questao()
+        for i in range(len(A)):
+            for j in range(len(A[i])):
+                A[i][j] = int(random()*10)
+        
+        print('\nMatriz A')
+        for i in range(len(A)):
+            for j in range(len(A[i])):
+                print(A[i][j], end='    ')
+            print()
+        print()
+
+    if number == 1 or number == 2 or number == 3 or number == 4 or number == 5 or number == 7 or number == 8 or number == 9 or number == 10:
+        lB = int(input("Digite o nº de linhas de B: "))
+        cB = int(input("Digite o nº de colunas de B: "))
+        
+        B = [None]* lB
+        for i in range(len(B)):
+            B[i] = [None]*cB
+
+        for i in range(len(B)):
+            for j in range(len(B[i])):
+                B[i][j] = int(random()*10)
+
+        print('\nMatriz B')
+        for i in range(len(B)):
+            for j in range(len(B[i])):
+                print(B[i][j], end='    ')
+            print()
+
+    escolher_questao()
+
+    entrada = input('Você quer continuar? [S] [N]: ')
+
+print('\nOBRIGADO!!!\n')
+print('Equipe:\n- Cleyson de Oliveira; matrícula: 2224391\n- José Vinicius Virginio da Silva; matrícula: 2216386')
