@@ -2,40 +2,45 @@ from random import random
 
 #CADASTRO DE MATRIZES
 print('-'*15,'MENU', '-'*15, '\n')
-lA = int(input("Digite o nº de linhas de A: "))
-cA = int(input("Digite o nº de colunas de A: "))
 
-lB = int(input("Digite o nº de linhas de B: "))
-cB = int(input("Digite o nº de colunas de B: "))
+print('-'*15, 'Qual questão você quer fazer?', '-'*15)
+number = int(input('\nDigite o n° da questão: ')) 
+if number == 1 or number == 2 or number == 3 or number == 4 or number == 6 or number == 8 or number == 9 or number == 10:
+    lA = int(input("Digite o nº de linhas de A: "))
+    cA = int(input("Digite o nº de colunas de A: "))
+    
+    A = [None]* lA
+    for i in range(len(A)):
+        A[i] = [None]*cA
 
-A = [None]* lA
-for i in range(len(A)):
-    A[i] = [None]*cA
-
-B = [None]* lB
-for i in range(len(B)):
-    B[i] = [None]*cB
-
-for i in range(len(A)):
-    for j in range(len(A[i])):
-        A[i][j] = int(random()*10)
-
-for i in range(len(B)):
-    for j in range(len(B[i])):
-        B[i][j] = int(random()*10)
-
-print('\nMatriz A')
-for i in range(len(A)):
-    for j in range(len(A[i])):
-        print(A[i][j], end='    ')
+    for i in range(len(A)):
+        for j in range(len(A[i])):
+            A[i][j] = int(random()*10)
+    
+    print('\nMatriz A')
+    for i in range(len(A)):
+        for j in range(len(A[i])):
+            print(A[i][j], end='    ')
+        print()
     print()
-print()
 
-print('\nMatriz B')
-for i in range(len(B)):
-    for j in range(len(B[i])):
-        print(B[i][j], end='    ')
-    print()
+if number == 1 or number == 2 or number == 3 or number == 4 or number == 5 or number == 7 or number == 8 or number == 9 or number == 10:
+    lB = int(input("Digite o nº de linhas de B: "))
+    cB = int(input("Digite o nº de colunas de B: "))
+    
+    B = [None]* lB
+    for i in range(len(B)):
+        B[i] = [None]*cB
+
+    for i in range(len(B)):
+        for j in range(len(B[i])):
+            B[i][j] = int(random()*10)
+
+    print('\nMatriz B')
+    for i in range(len(B)):
+        for j in range(len(B[i])):
+            print(B[i][j], end='    ')
+        print()
 
 def primo(number):
     j = 0
@@ -236,8 +241,6 @@ def questao_6(lA,cA,A):
             print(f'{mColuna[i][0]:.2f}', end='\n')
 
 def questao_7(lB,cB,B):
-    lB = int(input("Digite o nº de linhas de B: "))
-    cB = int(input("Digite o nº de colunas de B: "))
     if (lB==1 and cB==1) or (lB==1 and cB==0) or (lB==0 and cB==1):
         B = [None]
         B[0] = int(random()*10)
@@ -250,24 +253,20 @@ def questao_7(lB,cB,B):
                     nP+=1
         print(f'Qtnd de n°primos: {nP}')
     elif lB>1 and cB==1:
-        B = [None]* lB
-        for i in range(len(B)):
-            B[i] = [None]*cB
-        for i in range(len(B)):
-            for j in range(len(B[i])):
-                B[i][j] = int(random()*10)
-        print('Vetor coluna B')
-        for i in range(len(B)):
-            for j in range(len(B[i])):
-                print(B[i][j], end='    ')
-            print()
         nP = 0
         for i in range(len(B)):
             for j in range(len(B[i])):
                 if primo(B[i][j])==True:
                     nP+=1
         print(f'Qtnd de n°primos: {nP}')
-    else:
+    elif lB==cB:
+        nP = 0
+        for i in range(len(B)):
+            for j in range(len(B[i])):
+                if primo(B[i][j])==True:
+                    nP+=1
+        print(f'Qtnd de n°primos: {nP}')
+    elif lB!=cB:
         #Matriz B Transposta
         BT = [None]*cB
         for i in range(len(BT)):
@@ -522,7 +521,6 @@ def escolher_questao():
     elif number==10:
         questao_10(lA,cA,A,lB,cB,B)
 
-print('-'*15, 'Qual questão você quer fazer?', '-'*15)
-number = int(input('\nDigite o n° da questão: ')) 
+
 
 escolher_questao()
