@@ -134,7 +134,7 @@ def questao_5(lB,cB,B):
                     menor = B[i][j]
                     posmenorlinha = i
                     posmenorcoluna = j
-        print(f"O menor vale {menor} e está na linha {posmenorlinha+1} e na coluna {posmenorcoluna+1}")
+        print(f"O menor vale {menor} e está na linha {posmenorlinha} e na coluna {posmenorcoluna}")
 
 def questao_6(lA,cA,A):
     if (lA==1 and cA==1) or (lA==1 and cA==0) or (lA==0 and cA==1):
@@ -167,21 +167,21 @@ def questao_6(lA,cA,A):
             media = media/len(A[i])
         print(f'Média do vetor linha: {media:.2f}')
     else:
-        #MATRIZ COLUNA
-        mColuna = [None]
-        for i in range(len(mColuna)):
-            mColuna[i] = [None]*cA
+        #MATRIZ LINHA
+        mLinha = [None]
+        for i in range(len(mLinha)):
+            mLinha[i] = [None]*cA
         somaLA = 0
         for r in range(cA):
             somaLA = 0
             for j in range(len(A)):
                 somaLA+=A[j][r]
-            mColuna[0][r] = somaLA/len(A)
+            mLinha[0][r] = somaLA/len(A)
 
-        print('MATRIZ COLUNA')
-        for i in range(len(mColuna)):
-            for j in range(len(mColuna[i])):
-                print(f'{mColuna[i][j]:.2f}', end='     ')
+        print('MÉDIA LINHA')
+        for i in range(len(mLinha)):
+            for j in range(len(mLinha[i])):
+                print(f'{mLinha[i][j]:.2f}', end='     ')
 
         print()
 
@@ -195,7 +195,7 @@ def questao_6(lA,cA,A):
                 somaCA+=A[i][j]
             mColuna[i][0] = somaCA/cA
 
-        print('MATRIZ COLUNA')
+        print('MÉDIA COLUNA')
         for i in range(len(mColuna)):
             print(f'{mColuna[i][0]:.2f}', end='\n')
 
